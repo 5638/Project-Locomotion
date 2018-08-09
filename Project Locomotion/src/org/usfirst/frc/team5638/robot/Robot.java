@@ -7,15 +7,15 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team5638.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5638.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5638.robot.commands.driveCom;
+import org.usfirst.frc.team5638.robot.subsystems.DriveSub;
 import com.kauailabs.navx.frc.AHRS;
 
 public class Robot extends TimedRobot {
 	public static AHRS gyro;
 	
 	
-	public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+	public static DriveSub driveSub;
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
@@ -23,6 +23,9 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void robotInit() {
+		RobotMap.init();
+		
+		driveSub = new DriveSub();
 		m_oi = new OI();
 		
 		try {
@@ -30,9 +33,10 @@ public class Robot extends TimedRobot {
 	      } catch (RuntimeException ex) {
 	          DriverStation.reportError("Error instantiating the gyro:  " + ex.getMessage(), true);
 	    }
-		
+		/*
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+		*/
 	}
 
 	@Override

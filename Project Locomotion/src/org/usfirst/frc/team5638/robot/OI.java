@@ -7,11 +7,21 @@
 
 package org.usfirst.frc.team5638.robot;
 
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	
+	XboxController xbox1 = new XboxController(0);
+	
+	public double steerStick = xbox1.getRawAxis(0);
+	public double forwardThrottle = xbox1.getRawAxis(3);
+	public double reverseThrottle = -xbox1.getRawAxis(2);
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
